@@ -3,7 +3,6 @@ package com.taylak.wallpaper.helper;
 import java.util.Hashtable;
 import java.util.List;
 
-
 public final class Constants {
 	public static final String[] IMAGESs = new String[] {
 		
