@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="image_ids">
+ 
+    </string-array>
+    <string-array name="arrGruplar">
+        <item>Teams</item>
+        <item>Players</item>
+        <item>Miscellaneous</item>
+    </string-array>
+    <string-array name="arrbtnMenu">
+        <item>SET AS WALLPAPER</item>
+        <item>SAVE</item>
+        <item >SHARE</item>
+    </string-array>
+
+</resources>
