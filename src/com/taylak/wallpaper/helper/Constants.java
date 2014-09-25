@@ -11,7 +11,7 @@ public final class Constants {
 
 	public static String[] arrbtnMenu;
 
-	public static final String HOST = "http://.../";
+	public static final String HOST = "http://wallpaper.taylak.com/";
 	public static Hashtable<String, List<ImageItem>> GRUPLAR = new Hashtable<String, List<ImageItem>>();
 
 
