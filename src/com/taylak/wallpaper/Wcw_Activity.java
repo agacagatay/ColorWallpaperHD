@@ -13,6 +13,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.taylak.wallpaper.R;
@@ -32,11 +33,11 @@ public class Wcw_Activity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wcw);
 
-		SabitleriAyarla();
-		ActionBarAyarla();
+		sabitleriAyarla();
+		actionBarAyarla();
 	}
 
-	protected void SabitleriAyarla() {
+	protected void sabitleriAyarla() {
 
 		ImgTool.ctx = this;
 		if (Constants.arrbtnMenu == null) {
@@ -46,24 +47,14 @@ public class Wcw_Activity extends BaseActivity {
 
 	}
 
-	protected void ActionBarAyarla() {
+	protected void actionBarAyarla() {
 		TextView tv = (TextView) findViewById(R.id.txtactionbarbaslik_wcw);
 		Typeface face = Typeface.createFromAsset(getAssets(), "wc_font.ttf");
 		tv.setTypeface(face);
 	}
 
-	public void btnTeamsClick(View view) {
-		getImageList("1");
-
-	}
-
-	public void btnFootballersClick(View view) {
-
-		getImageList("2");
-	}
-
-	public void btnOthersClick(View view) {
-		getImageList("10");
+	public void btnClick(View v) {
+		getImageList((String) v.getTag());
 	}
 
 	protected void GrupAc(String grup) {
@@ -76,8 +67,9 @@ public class Wcw_Activity extends BaseActivity {
 				ArrayList<String> arrImageLinks = new ArrayList<String>();
 
 				for (ImageItem imageItem : tmpImgItemList) {
-					String picUrl =  imageItem.imageURL.replace("/hd1/", "/hd2/");
-					
+					String picUrl = imageItem.imageURL
+							.replace("/hd1/", "/hd2/");
+
 					arrImageLinks.add(picUrl);
 				}
 
@@ -148,8 +140,8 @@ public class Wcw_Activity extends BaseActivity {
 							tmpImg.setTitle(String.valueOf(jsonimgObj
 									.get("title")));
 
-							tmpImg.imageURL =Constants.HOST +  (String.valueOf(jsonimgObj
-									.get("url")));
+							tmpImg.imageURL = Constants.HOST
+									+ (String.valueOf(jsonimgObj.get("url")));
 
 							tmpImg.grup = (String
 									.valueOf(jsonimgObj.get("url")));
@@ -159,12 +151,13 @@ public class Wcw_Activity extends BaseActivity {
 
 						Constants.GRUPLAR.put(mod, tmpImgItemList);
 						GrupAc(mod);
-						
+
 					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					Gtool.mesaj(Wcw_Activity.this, "Dont get list.Check Your Connection...");
+					Gtool.mesaj(Wcw_Activity.this,
+							"Dont get list.Check Your Connection...");
 				}
 			}
 		};
@@ -177,11 +170,10 @@ public class Wcw_Activity extends BaseActivity {
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
-		 
-	 if (null!=progressDialog) {
-		 progressDialog.dismiss();
-	} 
-	 
+
+		if (null != progressDialog) {
+			progressDialog.dismiss();
+		}
 
 	}
 

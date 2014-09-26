@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blue">#00abea</color>
+
+    <color name="acikmavi">#00abea</color>
+    <color name="red">#ff0000</color>
+    <color name="green">#00ff00</color>
+    <color name="blue">#0000ff</color>
     <color name="white">#ffffff</color>
-     <color name="actionbar_textcolor">#199400</color>
-     <color name="kahve">#A35C00</color>
-      <color name="btnbackcolor">#E8D064</color>
-     
-     
+    <color name="black">#000000</color>
+    <color name="actionbar_textcolor">#199400</color>
+    <color name="kahve">#A35C00</color>
+    <color name="btnbackcolor">#E8D064</color>
+
 </resources>

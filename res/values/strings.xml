@@ -3,7 +3,7 @@
 
     <string name="app_name">Color Wallpaper</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    
   
     
        <!-- Activity titles -->
@@ -13,7 +13,7 @@
     <string name="ac_name_image_pager">Color Wallpaper</string>
   
     <!-- Labels -->
-        <string name="action_bar_share_with">Share with...</string>
+    <string name="action_bar_share_with">Share with...</string>
     <string name="label_activity_examples">Activity Examples</string>
     <string name="menu_item_clear_memory_cache">Clear memory cache</string>
     <string name="menu_item_clear_disc_cache">Clear disc cache</string>

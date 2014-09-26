@@ -34,8 +34,6 @@
             android:text="@string/app_name"
             android:textColor="@color/actionbar_textcolor"
             android:textSize="20sp" />
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -49,25 +47,75 @@
         android:padding="3dp" >
 
         <Button
-            android:id="@+id/btnTeams"
+            android:id="@+id/btnBlack"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
-            android:onClick="btnTeamsClick"
-            android:text="Teams"
-            android:textColor="@color/kahve"
+            android:onClick="btnClick"
+            android:text="BLACK"
+             android:tag="1"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btnFootballers"
+            android:id="@+id/btnWhite"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
-            android:onClick="btnFootballersClick"
-            android:text="Footballers"
-            android:textColor="@color/kahve"
+            android:onClick="btnClick"
+            android:text="WHITE"
+             android:tag="2"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnBlackWhite"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:background="@color/btnbackcolor"
+            android:onClick="btnBlackWhiteClick"
+            android:text="BLACK WHITE"
+             android:tag="3"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnRed"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:background="@color/btnbackcolor"
+            android:onClick="btnRedClick"
+            android:text="RED"
+             android:tag="4"
+            android:textColor="@color/red"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnGreen"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:background="@color/btnbackcolor"
+            android:onClick="btnGreenClick"
+            android:text="GREEN"
+            android:tag="5"
+            android:textColor="@color/green"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnBlue"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:background="@color/btnbackcolor"
+            android:onClick="btnBlueClick"
+            android:text="BLUE"
+             android:tag="6"
+            android:textColor="@color/blue"
             android:textSize="20sp" />
 
         <Button
@@ -78,25 +126,16 @@
             android:background="@color/btnbackcolor"
             android:onClick="btnOthersClick"
             android:text="Others"
+             android:tag="99"
             android:textColor="@color/kahve"
             android:textSize="20sp" />
     </LinearLayout>
+
     <LinearLayout
-    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:layout_alignParentBottom="true" >
-
-
-    <com.google.ads.AdView
-    android:id="@+id/reklamView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    ads:adSize="BANNER"
-    ads:adUnitId="ca-app-pub-9844389081233731/5411389006"
-    ads:loadAdOnCreate="true" />
-
-
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center" >
     </LinearLayout>
+
 </RelativeLayout>
