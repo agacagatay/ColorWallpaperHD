@@ -53,8 +53,8 @@
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
             android:onClick="btnClick"
+            android:tag="1"
             android:text="BLACK"
-             android:tag="1"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -65,8 +65,8 @@
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
             android:onClick="btnClick"
+            android:tag="2"
             android:text="WHITE"
-             android:tag="2"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -76,9 +76,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
-            android:onClick="btnBlackWhiteClick"
+            android:onClick="btnClick"
+            android:tag="3"
             android:text="BLACK WHITE"
-             android:tag="3"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -88,9 +88,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
-            android:onClick="btnRedClick"
+            android:onClick="btnClick"
+            android:tag="4"
             android:text="RED"
-             android:tag="4"
             android:textColor="@color/red"
             android:textSize="20sp" />
 
@@ -100,9 +100,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
-            android:onClick="btnGreenClick"
-            android:text="GREEN"
+            android:onClick="btnClick"
             android:tag="5"
+            android:text="GREEN"
             android:textColor="@color/green"
             android:textSize="20sp" />
 
@@ -112,9 +112,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
-            android:onClick="btnBlueClick"
+            android:onClick="btnClick"
+            android:tag="6"
             android:text="BLUE"
-             android:tag="6"
             android:textColor="@color/blue"
             android:textSize="20sp" />
 
@@ -124,9 +124,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dip"
             android:background="@color/btnbackcolor"
-            android:onClick="btnOthersClick"
+            android:onClick="btnClick"
+            android:tag="99"
             android:text="Others"
-             android:tag="99"
             android:textColor="@color/kahve"
             android:textSize="20sp" />
     </LinearLayout>

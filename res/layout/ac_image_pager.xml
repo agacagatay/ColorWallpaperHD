@@ -58,19 +58,19 @@
         
     </LinearLayout>
 
-    <LinearLayout
-        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center" >
+<!--     <LinearLayout -->
+<!--         xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:gravity="center" > -->
 
-        <com.google.ads.AdView
-            android:id="@+id/reklamView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-9844389081233731/5411389006"
-            ads:loadAdOnCreate="true" />
-    </LinearLayout>
+<!--         <com.google.ads.AdView -->
+<!--             android:id="@+id/reklamView" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             ads:adSize="BANNER" -->
+<!--             ads:adUnitId="ca-app-pub-9844389081233731/5411389006" -->
+<!--             ads:loadAdOnCreate="true" /> -->
+<!--     </LinearLayout> -->
 
 </LinearLayout>
