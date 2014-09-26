@@ -376,7 +376,7 @@ public class ImagePagerActivity extends BaseActivity {
 								message = "Unknown error";
 								break;
 							}
-							Toast.makeText(ImagePagerActivity.this, message,
+							Toast.makeText(ImagePagerActivity.this, message + "/n" + imageUri,
 									Toast.LENGTH_SHORT).show();
 
 							spinner.setVisibility(View.GONE);
@@ -389,12 +389,13 @@ public class ImagePagerActivity extends BaseActivity {
 							spinner.setVisibility(View.GONE);
 							ImageView tmpImageview = (ImageView)view;
 							tmpImageview.setOnClickListener(null);
-							tmpImageview.setOnClickListener(new View.OnClickListener() {
+							tmpImageview.setOnLongClickListener(new View.OnLongClickListener() {
 								
 								@Override
-								public void onClick(View v) {
+								public boolean onLongClick(View v) {
+									// TODO Auto-generated method stub
 									showDialog(1);
-									
+									return false;
 								}
 							});
 

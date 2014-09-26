@@ -33,10 +33,20 @@
             android:textColor="@color/actionbar_textcolor"
             android:textSize="16sp" />
 
+<!--         <TextView -->
+<!--             android:id="@+id/txtactionbarlblaciklama" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginLeft="10dp" -->
+<!--             android:layout_toRightOf="@+id/txtactionbarbaslik_pager" -->
+<!--             android:text="Long Press For Menu" -->
+<!--             android:textColor="@color/blue" -->
+<!--             android:textSize="8sp" /> -->
+        
         <Button
             android:id="@+id/btnActionBarMenu"
             android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
             android:background="@drawable/btnactionbarmenu"
