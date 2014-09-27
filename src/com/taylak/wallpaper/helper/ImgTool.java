@@ -327,7 +327,7 @@ public class ImgTool {
 
 		File mediaStorageDir;
 
-		if (!android.os.Environment.getExternalStorageState().equals(
+		if (android.os.Environment.getExternalStorageState().equals(
 				android.os.Environment.MEDIA_MOUNTED)) {
 
 			mediaStorageDir = new File(
