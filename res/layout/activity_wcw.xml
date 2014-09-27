@@ -36,100 +36,106 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linlayButtons"
-        android:layout_width="fill_parent"
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linlayActBar"
-        android:layout_gravity="center"
-        android:layout_margin="1dp"
-        android:orientation="vertical"
-        android:padding="3dp" >
+        android:layout_below="@id/linlayActBar" >
 
-        <Button
-            android:id="@+id/btnBlack"
+        <LinearLayout
+            android:id="@+id/linlayButtons"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dip"
-            android:background="@color/btnbackcolor"
-            android:onClick="btnClick"
-            android:tag="1"
-            android:text="BLACK"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_gravity="center"
+            android:layout_margin="1dp"
+            android:orientation="vertical"
+            android:padding="3dp" >
 
-        <Button
-            android:id="@+id/btnWhite"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dip"
-            android:background="@color/btnbackcolor"
-            android:onClick="btnClick"
-            android:tag="2"
-            android:text="WHITE"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnBlack"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@color/btnbackcolor"
+                android:onClick="btnClick"
+                android:tag="1"
+                android:text="BLACK"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btnBlackWhite"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dip"
-            android:background="@color/btnbackcolor"
-            android:onClick="btnClick"
-            android:tag="3"
-            android:text="BLACK WHITE"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnWhite"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@color/btnbackcolor"
+                android:onClick="btnClick"
+                android:tag="2"
+                android:text="WHITE"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btnRed"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dip"
-            android:background="@color/btnbackcolor"
-            android:onClick="btnClick"
-            android:tag="4"
-            android:text="RED"
-            android:textColor="@color/red"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnBlackWhite"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@color/btnbackcolor"
+                android:onClick="btnClick"
+                android:tag="3"
+                android:text="BLACK WHITE"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btnGreen"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dip"
-            android:background="@color/btnbackcolor"
-            android:onClick="btnClick"
-            android:tag="5"
-            android:text="GREEN"
-            android:textColor="@color/green"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnRed"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@color/btnbackcolor"
+                android:onClick="btnClick"
+                android:tag="4"
+                android:text="RED"
+                android:textColor="@color/red"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btnBlue"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dip"
-            android:background="@color/btnbackcolor"
-            android:onClick="btnClick"
-            android:tag="6"
-            android:text="BLUE"
-            android:textColor="@color/blue"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/btnGreen"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@color/btnbackcolor"
+                android:onClick="btnClick"
+                android:tag="5"
+                android:text="GREEN"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btnOthers"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dip"
-            android:background="@color/btnbackcolor"
-            android:onClick="btnClick"
-            android:tag="99"
-            android:text="Others"
-            android:textColor="@color/kahve"
-            android:textSize="20sp" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnBlue"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@color/btnbackcolor"
+                android:onClick="btnClick"
+                android:tag="6"
+                android:text="BLUE"
+                android:textColor="@color/blue"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnOthers"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@color/btnbackcolor"
+                android:onClick="btnClick"
+                android:tag="99"
+                android:text="Others"
+                android:textColor="@color/kahve"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="fill_parent"

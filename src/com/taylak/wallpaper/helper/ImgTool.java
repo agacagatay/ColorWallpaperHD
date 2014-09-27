@@ -27,6 +27,7 @@ import android.graphics.Point;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -131,25 +132,23 @@ public class ImgTool {
 	// task.execute(_is);
 	// }
 	// }
-	
+
 	public static void SetAsWallpaper(Uri _uri) {
-		
+
 		Intent localIntent = new Intent("android.intent.action.ATTACH_DATA");
-		  try
-	      {
-	      
-	        localIntent.setDataAndType(_uri, "image/jpeg");
-	        localIntent.putExtra("mimeType", "image/jpeg");
-	        ctx.startActivity(Intent.createChooser(localIntent, "Set Image..World Cup.."));
-	      
-	        return;
-	      }
-	      catch (Exception localException)
-	      {
-	     
-	      }
+		try {
+
+			localIntent.setDataAndType(_uri, "image/jpeg");
+			localIntent.putExtra("mimeType", "image/jpeg");
+			ctx.startActivity(Intent.createChooser(localIntent,
+					"Set Image..World Cup.."));
+
+			return;
+		} catch (Exception localException) {
+
+		}
 	}
-	
+
 	public static void SetAsWallpaper(InputStream _data) {
 		WallpaperManager myWallpaperManager = WallpaperManager.getInstance(ctx);
 		try {
@@ -235,13 +234,13 @@ public class ImgTool {
 				Log.d("BitmapSaveTask", "storeimage picturefile==null");// e.getMessage());
 				return null;
 			}
-			if(pictureFile.exists()){
+			if (pictureFile.exists()) {
 				retVal[0] = pictureFile;
-		
+
 				return retVal;
 			}
 			try {
-				
+
 				FileOutputStream fos = new FileOutputStream(pictureFile);
 
 				try {
@@ -325,42 +324,29 @@ public class ImgTool {
 	// }
 
 	public static File getOutputMediaFile(String _imageName) {
-		// To be safe, you should check that the SDCard is mounted
-		// using Environment.getExternalStorageState() before doing this.
 
 		File mediaStorageDir;
 
-		if (android.os.Environment.getExternalStorageState().equals(
+		if (!android.os.Environment.getExternalStorageState().equals(
 				android.os.Environment.MEDIA_MOUNTED)) {
-
-			// mediaStorageDir = new File(
-			// Environment.getExternalStorageDirectory()
-			// + "/Android/data/" + ctx.getPackageName()
-			// + "/files");
 
 			mediaStorageDir = new File(
 					Environment
 							.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-							+ "/WCWallpaper");
+							+ "/ColorWallpaper");
 		} else {
+
 			ContextWrapper cw = new ContextWrapper(ctx);
 			// path to /data/data/yourapp/app_data/imageDir
-			mediaStorageDir = cw.getDir("WCWallpaper", Context.MODE_PRIVATE);
-		}
-		// This location works best if you want the created images to be
-		// shared
-		// between applications and persist after your app has been
-		// uninstalled.
+			mediaStorageDir = cw.getDir("ColorWallpaper", Context.MODE_PRIVATE);
 
-		// Create the storage directory if it does not exist
+		}
+
 		if (!mediaStorageDir.exists()) {
 			if (!mediaStorageDir.mkdirs()) {
 				return null;
 			}
 		}
-		// Create a media file name
-		// String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new
-		// Date());
 
 		File mediaFile;
 		String mImageName;
