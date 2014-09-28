@@ -10,7 +10,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.taylak.wallpaper.R;
+import com.taylak.wallpaperhd.R;
 import com.taylak.wallpaper.helper.ImageItem;
 import com.taylak.wallpaper.helper.ImgTool;
 import com.taylak.wallpaper.net.SenkronHttp;

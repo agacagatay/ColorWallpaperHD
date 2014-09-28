@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.taylak.wallpaper.R;
+import com.taylak.wallpaperhd.R;
 import com.taylak.wallpaper.helper.Constants.Extra;
 import com.taylak.wallpaper.universalimage.AbsListViewBaseActivity;
  

@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import android.widget.AbsListView;
 
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
-import com.taylak.wallpaper.R;
+import com.taylak.wallpaperhd.R;
 
 public class AbsListViewBaseActivity  extends BaseActivity  {
 	protected static final String STATE_PAUSE_ON_SCROLL = "STATE_PAUSE_ON_SCROLL";

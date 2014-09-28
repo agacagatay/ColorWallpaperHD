@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.taylak.wallpaper.R;
+import com.taylak.wallpaperhd.R;
 import com.taylak.wallpaper.helper.ImageItem;
 
 public class ImageViewAdapter extends ArrayAdapter<ImageItem> {

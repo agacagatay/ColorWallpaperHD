@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.Menu;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.taylak.wallpaper.R;
+import com.taylak.wallpaperhd.R;
 
 
 public abstract class BaseActivity extends Activity {

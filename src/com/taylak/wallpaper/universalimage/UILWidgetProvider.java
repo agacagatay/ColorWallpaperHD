@@ -5,7 +5,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import com.taylak.wallpaper.R;
+import com.taylak.wallpaperhd.R;
 import com.taylak.wallpaper.helper.Constants;
 
 import android.appwidget.AppWidgetManager;

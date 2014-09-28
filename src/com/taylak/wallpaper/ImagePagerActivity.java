@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -24,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -37,6 +35,7 @@ import com.taylak.wallpaper.helper.ImageItem;
 import com.taylak.wallpaper.helper.ImgTool;
 import com.taylak.wallpaper.net.SenkronDownload;
 import com.taylak.wallpaper.universalimage.BaseActivity;
+import com.taylak.wallpaperhd.R;
 
 public class ImagePagerActivity extends BaseActivity {
 	private static final String STATE_POSITION = "STATE_POSITION";

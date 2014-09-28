@@ -23,7 +23,7 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
-import com.taylak.wallpaper.R;
+import com.taylak.wallpaperhd.R;
 import com.taylak.wallpaper.helper.Constants;
 import com.taylak.wallpaper.helper.Gtool;
 import com.taylak.wallpaper.helper.ISenkronSonuc;

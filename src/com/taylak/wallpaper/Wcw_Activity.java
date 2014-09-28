@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.taylak.wallpaper.R;
+import com.taylak.wallpaperhd.R;
 import com.taylak.wallpaper.helper.Constants;
 import com.taylak.wallpaper.helper.Gtool;
 import com.taylak.wallpaper.helper.ISenkronSonuc;
