@@ -39,7 +39,7 @@ public class ImgTool {
 
 	public static ImageItem ImageItemFromUrl(String url) {
 
-		for (List<ImageItem> lstImg : Constants.GRUPLAR.values()) {
+		for (List<ImageItem> lstImg : Referanslar.getGRUPLAR().values()) {
 			for (ImageItem item : lstImg) {
 				if (item.imageURL.equalsIgnoreCase(url)) {
 					return item;

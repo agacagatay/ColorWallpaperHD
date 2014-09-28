@@ -22,6 +22,7 @@ import com.taylak.wallpaper.helper.Gtool;
 import com.taylak.wallpaper.helper.ISenkronSonuc;
 import com.taylak.wallpaper.helper.ImageItem;
 import com.taylak.wallpaper.helper.ImgTool;
+import com.taylak.wallpaper.helper.Referanslar;
 import com.taylak.wallpaper.net.Jsonislem;
 import com.taylak.wallpaper.net.SenkronHttp;
 import com.taylak.wallpaper.universalimage.BaseActivity;
@@ -45,6 +46,8 @@ public class Wcw_Activity extends BaseActivity {
 					R.array.arrbtnMenu);
 		}
 
+		Referanslar.ReferanslarConst(this);
+
 	}
 
 	protected void actionBarAyarla() {
@@ -62,7 +65,7 @@ public class Wcw_Activity extends BaseActivity {
 		List<ImageItem> tmpImgItemList;
 
 		try {
-			tmpImgItemList = Constants.GRUPLAR.get(grup);
+			tmpImgItemList = Referanslar.getGRUPLAR().get(grup);
 			if ((tmpImgItemList != null) && (tmpImgItemList.size() > 0)) {
 				ArrayList<String> arrImageLinks = new ArrayList<String>();
 
@@ -93,13 +96,17 @@ public class Wcw_Activity extends BaseActivity {
 		List<ImageItem> tmpImgItem;
 
 		try {
-			tmpImgItem = Constants.GRUPLAR.get(grup);
-			if ((tmpImgItem != null) && (tmpImgItem.size() > 0)) {
+			if (!Gtool.isNetworkConnected(this)) {
+				Gtool.mesaj(this, "Check Connection for new Wallpaper");
+				tmpImgItem = Referanslar.getGRUPLAR().get(grup);
+				if ((tmpImgItem != null) && (tmpImgItem.size() > 0)) {
 
-				GrupAc(grup);
-				return;
+					GrupAc(grup);
+					return;
 
+				}
 			}
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.w("wvwAct", e.getMessage());
@@ -149,7 +156,8 @@ public class Wcw_Activity extends BaseActivity {
 							tmpImgItemList.add(tmpImg);
 						}
 
-						Constants.GRUPLAR.put(mod, tmpImgItemList);
+						Referanslar.getGRUPLAR().put(mod, tmpImgItemList);
+						Referanslar.setGRUPLAR(Referanslar.getGRUPLAR());
 						GrupAc(mod);
 
 					}

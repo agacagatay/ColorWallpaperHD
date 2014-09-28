@@ -15,12 +15,12 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -46,6 +46,17 @@ public class Gtool {
 
 	}
 
+	public static boolean isNetworkConnected(Context ctx) {
+		ConnectivityManager cm = (ConnectivityManager) ctx
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo ni = cm.getActiveNetworkInfo();
+		if (ni == null) {
+			// There are no active networks.
+			return false;
+		} else
+			return true;
+	}
+
 	public static void mesaj(Context ctx, String mesaj) {
 		Toast.makeText(ctx, mesaj, Toast.LENGTH_SHORT).show();
 	}
@@ -69,7 +80,6 @@ public class Gtool {
 		mpMusic.start();
 
 	}
-
 
 	public static int BUFFER_SIZE = 1024 * 4;
 

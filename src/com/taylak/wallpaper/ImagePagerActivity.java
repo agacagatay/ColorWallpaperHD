@@ -71,8 +71,7 @@ public class ImagePagerActivity extends BaseActivity {
 		pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(new ImagePagerAdapter(imageUrls));
 		pager.setCurrentItem(pagerPosition);
-		
-		
+
 	}
 
 	@Override
@@ -118,7 +117,8 @@ public class ImagePagerActivity extends BaseActivity {
 					public void isBitti(Object... obj) {
 						File tmpFile = (File) obj[0];
 						Uri imgUri = Uri.fromFile(tmpFile);
-						//Gtool.mesaj(ImagePagerActivity.this, "Processing image");
+						// Gtool.mesaj(ImagePagerActivity.this,
+						// "Processing image");
 						if (_save) {
 							Gtool.mesaj(ImagePagerActivity.this,
 									tmpFile.getName() + " SAVED");
@@ -168,6 +168,7 @@ public class ImagePagerActivity extends BaseActivity {
 								"Already Saved:   "
 										+ pictureFile.getAbsolutePath());
 					} else {
+
 						ResimAyarla(tmpImageItem, _setWallpaper, _share, false);
 					}
 
@@ -201,49 +202,54 @@ public class ImagePagerActivity extends BaseActivity {
 		}
 
 		// ****************************************************************
+		if (Gtool.isNetworkConnected(this)) {
 
-		Gtool.mesaj(this, "HD Photo is downloading...");
-		SenkronDownload imgDownTask = new SenkronDownload(new ISenkronSonuc() {
+			Gtool.mesaj(this, "HD Photo is downloading...");
+			SenkronDownload imgDownTask = new SenkronDownload(
+					new ISenkronSonuc() {
 
-			@Override
-			public void isBitti(Object... obj) {
-				// TODO Auto-generated method stub
-				try {
-					String url = (String) obj[1];
-					InputStream is = (InputStream) obj[0];
-					if (null == is) {
-						Log.w("imgDownTask", "is=null geldi");
-						return;
-					}
-					ImageItem tmpImageItem;
-					tmpImageItem = ImgTool.ImageItemFromUrl(url);
-					if (tmpImageItem != null) {
-						tmpImageItem.setImageInputStream(is);
-						ResimAyarla(tmpImageItem, _setWallpaper, _share, _save);
-						return;
+						@Override
+						public void isBitti(Object... obj) {
+							// TODO Auto-generated method stub
+							try {
+								String url = (String) obj[1];
+								InputStream is = (InputStream) obj[0];
+								if (null == is) {
+									Log.w("imgDownTask", "is=null geldi");
+									return;
+								}
+								ImageItem tmpImageItem;
+								tmpImageItem = ImgTool.ImageItemFromUrl(url);
+								if (tmpImageItem != null) {
+									tmpImageItem.setImageInputStream(is);
+									ResimAyarla(tmpImageItem, _setWallpaper,
+											_share, _save);
+									return;
 
-					}
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+								}
+							} catch (Exception e) {
+								// TODO: handle exception
+							}
 
-			}
+						}
 
-			@Override
-			public void isBitti(Bitmap bmp) {
-				// TODO Auto-generated method stub
+						@Override
+						public void isBitti(Bitmap bmp) {
+							// TODO Auto-generated method stub
 
-			}
+						}
 
-			@Override
-			public void isBitti(String deger, String mod) {
-				// TODO Auto-generated method stub
+						@Override
+						public void isBitti(String deger, String mod) {
+							// TODO Auto-generated method stub
 
-			}
-		});
+						}
+					});
 
-		imgDownTask.execute(url);
-
+			imgDownTask.execute(url);
+		}else {
+			Gtool.mesaj(this, "Active Internet Connection Not Found");
+		}
 	}
 
 	private Intent createShareIntent(Uri uri) {
@@ -376,7 +382,8 @@ public class ImagePagerActivity extends BaseActivity {
 								message = "Unknown error";
 								break;
 							}
-							Toast.makeText(ImagePagerActivity.this, message + "/n" + imageUri,
+							Toast.makeText(ImagePagerActivity.this,
+									message + "/n" + imageUri,
 									Toast.LENGTH_SHORT).show();
 
 							spinner.setVisibility(View.GONE);
@@ -387,17 +394,18 @@ public class ImagePagerActivity extends BaseActivity {
 								View view, Bitmap loadedImage) {
 
 							spinner.setVisibility(View.GONE);
-							ImageView tmpImageview = (ImageView)view;
+							ImageView tmpImageview = (ImageView) view;
 							tmpImageview.setOnClickListener(null);
-							tmpImageview.setOnLongClickListener(new View.OnLongClickListener() {
-								
-								@Override
-								public boolean onLongClick(View v) {
-									// TODO Auto-generated method stub
-									showDialog(1);
-									return false;
-								}
-							});
+							tmpImageview
+									.setOnLongClickListener(new View.OnLongClickListener() {
+
+										@Override
+										public boolean onLongClick(View v) {
+											// TODO Auto-generated method stub
+											showDialog(1);
+											return false;
+										}
+									});
 
 						}
 					});
@@ -422,5 +430,4 @@ public class ImagePagerActivity extends BaseActivity {
 
 	}
 
-	
 }

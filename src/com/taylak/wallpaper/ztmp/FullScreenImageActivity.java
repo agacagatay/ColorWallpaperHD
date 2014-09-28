@@ -29,6 +29,7 @@ import com.taylak.wallpaper.helper.Gtool;
 import com.taylak.wallpaper.helper.ISenkronSonuc;
 import com.taylak.wallpaper.helper.ImageItem;
 import com.taylak.wallpaper.helper.ImgTool;
+import com.taylak.wallpaper.helper.Referanslar;
 
 public class FullScreenImageActivity extends Activity implements
 		AdapterView.OnItemSelectedListener, ViewSwitcher.ViewFactory,
@@ -85,7 +86,7 @@ public class FullScreenImageActivity extends Activity implements
 		// });
 
 		galleryImageAdapter = new GalleryImageAdapter(this,
-				(ArrayList<ImageItem>) Constants.GRUPLAR.get(0));
+				(ArrayList<ImageItem>) Referanslar.getGRUPLAR().get(0));
 
 		g.setAdapter(galleryImageAdapter);
 
