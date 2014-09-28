@@ -141,7 +141,7 @@ public class ImgTool {
 			localIntent.setDataAndType(_uri, "image/jpeg");
 			localIntent.putExtra("mimeType", "image/jpeg");
 			ctx.startActivity(Intent.createChooser(localIntent,
-					"Set Image..World Cup.."));
+					"Set Image.."));
 
 			return;
 		} catch (Exception localException) {
