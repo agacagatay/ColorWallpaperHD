@@ -156,8 +156,12 @@ public class Wcw_Activity extends BaseActivity {
 							tmpImgItemList.add(tmpImg);
 						}
 
-						Referanslar.getGRUPLAR().put(mod, tmpImgItemList);
-						Referanslar.setGRUPLAR(Referanslar.getGRUPLAR());
+						if (!Referanslar.getGRUPLAR().containsKey(mod) || Referanslar.getGRUPLAR().get(mod).size() != tmpImgItemList
+								.size()) {
+							Referanslar.getGRUPLAR().put(mod, tmpImgItemList);
+							Referanslar.setGRUPLAR(Referanslar.getGRUPLAR());
+
+						}
 						GrupAc(mod);
 
 					}

@@ -23,20 +23,23 @@ public final class Referanslar {
 
 	private static Context ctx;
 
+	private static GsonBuilder gsonb = new GsonBuilder();
+	private static Gson gson = gsonb.create();
+
 	public static void ReferanslarConst(Context _ctx) {
 
 		ctx = _ctx;
 
 		sp = ctx.getSharedPreferences(spSabitler,
 				android.content.Context.MODE_PRIVATE);
-	//	getprefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+		// getprefs = PreferenceManager.getDefaultSharedPreferences(ctx);
 
 	}
 
 	private static Hashtable<String, List<ImageItem>> GRUPLAR;
 
 	public static Hashtable<String, List<ImageItem>> getGRUPLAR() {
-		
+
 		if (GRUPLAR == null) {
 			String grupJson = sp.getString("gruplarXML", "");
 			if (grupJson.equalsIgnoreCase("")) {
@@ -58,8 +61,6 @@ public final class Referanslar {
 	}
 
 	public static void setGRUPLAR(Hashtable<String, List<ImageItem>> _gruplar) {
-		GsonBuilder gsonb = new GsonBuilder();
-		Gson gson = gsonb.create();
 
 		Type grupType = new TypeToken<Hashtable<String, List<ImageItem>>>() {
 		}.getType();
