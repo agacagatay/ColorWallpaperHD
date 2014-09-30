@@ -1,31 +1,35 @@
 package com.taylak.wallpaper;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.AppEventsLogger;
+import com.facebook.FacebookAuthorizationException;
+import com.facebook.FacebookOperationCanceledException;
+import com.facebook.Session;
+import com.facebook.Session.StatusCallback;
+import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
-import com.taylak.wallpaperhd.R;
+import com.facebook.Session.OpenRequest;
+import com.facebook.model.GraphUser;
+import com.facebook.widget.FacebookDialog;
+import com.facebook.widget.LoginButton;
 import com.taylak.wallpaper.helper.Constants;
 import com.taylak.wallpaper.helper.Gtool;
 import com.taylak.wallpaper.helper.ISenkronSonuc;
@@ -35,13 +39,16 @@ import com.taylak.wallpaper.helper.MainFragment;
 import com.taylak.wallpaper.helper.Referanslar;
 import com.taylak.wallpaper.net.Jsonislem;
 import com.taylak.wallpaper.net.SenkronHttp;
+import com.taylak.wallpaperhd.R;
 
 public class Wcw_Activity extends FragmentActivity {
 
 	private MainFragment mainFragment;
-    private UiLifecycleHelper uiHelper;
-    
-    
+	
+
+	//private LoginButton loginButton;
+	private GraphUser user;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,18 +56,135 @@ public class Wcw_Activity extends FragmentActivity {
 
 		sabitleriAyarla();
 		actionBarAyarla();
+	//	FbOnyukleme(savedInstanceState);
 
-		if (savedInstanceState == null) {
-			// Add the fragment on initial activity setup
-			mainFragment = new MainFragment();
-			getSupportFragmentManager().beginTransaction()
-					.add(android.R.id.content, mainFragment).commit();
-		} else {
-			// Or set the fragment from restored state info
-			mainFragment = (MainFragment) getSupportFragmentManager()
-					.findFragmentById(android.R.id.content);
+	}
+	
+	
+//private UiLifecycleHelper uiHelper;
+//	private PendingAction pendingAction = PendingAction.NONE;
+//
+//	private enum PendingAction {
+//		NONE, POST_PHOTO, POST_STATUS_UPDATE
+//	}
+//
+//	private final String PENDING_ACTION_BUNDLE_KEY = "com.taylak.wallpaperhd:PendingAction";
+
+	// protected void FbOnyukleme(Bundle savedInstanceState) {
+	// if (savedInstanceState == null) {
+	// // Add the fragment on initial activity setup
+	// mainFragment = new MainFragment();
+	// getSupportFragmentManager().beginTransaction()
+	// .add(android.R.id.content, mainFragment).commit();
+	// } else {
+	// // Or set the fragment from restored state info
+	// mainFragment = (MainFragment) getSupportFragmentManager()
+	// .findFragmentById(android.R.id.content);
+	// }
+	//
+	// uiHelper = new UiLifecycleHelper(this, callback);
+	// uiHelper.onCreate(savedInstanceState);
+	//
+	// if (savedInstanceState != null) {
+	// String name = savedInstanceState
+	// .getString(PENDING_ACTION_BUNDLE_KEY);
+	// pendingAction = PendingAction.valueOf(name);
+	// }
+	//
+	// loginButton = (LoginButton)findViewById(R.id.authButton);
+	// loginButton.setReadPermissions(Arrays.asList("user_likes",
+	// "user_status"));
+	// //loginButton.setPublishPermissions("user_friends","email");
+	//
+	// loginButton.setUserInfoChangedCallback(new
+	// LoginButton.UserInfoChangedCallback() {
+	//
+	// @Override
+	// public void onUserInfoFetched(GraphUser user) {
+	// // TODO Auto-generated method stub
+	// Wcw_Activity.this.user = user;
+	//
+	// handlePendingAction();
+	// }
+	// });
+	//
+	// }
+
+	// private Session.StatusCallback callback = new Session.StatusCallback() {
+	// @Override
+	// public void call(Session session, SessionState state,
+	// Exception exception) {
+	// onSessionStateChange(session, state, exception);
+	// }
+	// };
+
+	// private FacebookDialog.Callback dialogCallback = new
+	// FacebookDialog.Callback() {
+	// @Override
+	// public void onError(FacebookDialog.PendingCall pendingCall,
+	// Exception error, Bundle data) {
+	// Log.d("HelloFacebook", String.format("Error: %s", error.toString()));
+	// }
+	//
+	// @Override
+	// public void onComplete(FacebookDialog.PendingCall pendingCall,
+	// Bundle data) {
+	// Log.d("HelloFacebook", "Success!");
+	// }
+	// };
+
+	// private void onSessionStateChange(Session session, SessionState state,
+	// Exception exception) {
+	// if (pendingAction != PendingAction.NONE
+	// && (exception instanceof FacebookOperationCanceledException || exception
+	// instanceof FacebookAuthorizationException)) {
+	// new AlertDialog.Builder(Wcw_Activity.this)
+	// .setTitle(R.string.cancelled)
+	// .setMessage(R.string.permission_not_granted)
+	// .setPositiveButton(R.string.ok, null).show();
+	// pendingAction = PendingAction.NONE;
+	// } else if (state == SessionState.OPENED_TOKEN_UPDATED) {
+	// handlePendingAction();
+	// }
+	//
+	// }
+
+	private static Session openActiveSession(Activity activity,
+			boolean allowLoginUI, List permissions, StatusCallback callback) {
+		OpenRequest openRequest = new OpenRequest(activity).setPermissions(
+				permissions).setCallback(callback);
+		Session session = new Session.Builder(activity).build();
+		if (SessionState.CREATED_TOKEN_LOADED.equals(session.getState())
+				|| allowLoginUI) {
+			Session.setActiveSession(session);
+			session.openForRead(openRequest);
+			return session;
 		}
+		return null;
+	}
 
+	private void openFacebookSession() {
+
+		Session.openActiveSession(this, true,
+				Arrays.asList("email", "user_birthday","user_friends"),
+				new Session.StatusCallback() {
+			
+					@Override
+					public void call(Session session, SessionState state,
+							Exception exception) {
+						if (exception != null) {
+							Log.d("__Facebook__hata", exception.getMessage());
+						}
+						Log.d("__Facebook__state",
+								"Session State: " + session.getState());
+						
+						
+						
+						// you can make request to the /me API or do other stuff
+						// like
+						// post, etc. here
+					}
+				});
 	}
 
 	protected void sabitleriAyarla() {
@@ -82,7 +206,8 @@ public class Wcw_Activity extends FragmentActivity {
 	}
 
 	public void btnClick(View v) {
-		getImageList((String) v.getTag());
+		openFacebookSession();
+		// getImageList((String) v.getTag());
 	}
 
 	protected void GrupAc(String grup) {
@@ -213,6 +338,51 @@ public class Wcw_Activity extends FragmentActivity {
 			progressDialog.dismiss();
 		}
 
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		// uiHelper.onActivityResult(requestCode, resultCode, data,
+		// dialogCallback);
+		Session.getActiveSession().onActivityResult(Wcw_Activity.this, requestCode,
+				resultCode, data);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		//uiHelper.onResume();
+
+
+		//AppEventsLogger.activateApp(this);
+
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		//uiHelper.onPause();
+
+		// Call the 'deactivateApp' method to log an app event for use in
+		// analytics and advertising
+		// reporting. Do so in the onPause methods of the primary Activities
+		// that an app may be launched into.
+		//AppEventsLogger.deactivateApp(this);
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		//uiHelper.onSaveInstanceState(outState);
+
+		// outState.putString(PENDING_ACTION_BUNDLE_KEY, pendingAction.name());
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		//uiHelper.onDestroy();
 	}
 
 	private ProgressDialog progressDialog;
