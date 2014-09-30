@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,10 +20,15 @@ import java.util.zip.ZipOutputStream;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -57,6 +64,23 @@ public class Gtool {
 			return true;
 	}
 
+	public static void LogKeyHash(Context ctx){
+	       try {
+	            PackageInfo info = ctx.getPackageManager().getPackageInfo(
+	                    "com.taylak.wallpaperhd", 
+	                    PackageManager.GET_SIGNATURES);
+	            for (Signature signature : info.signatures) {
+	                MessageDigest md = MessageDigest.getInstance("SHA");
+	                md.update(signature.toByteArray());
+	                Log.w("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+	                }
+	        } catch (NameNotFoundException e) {
+
+	        } catch (NoSuchAlgorithmException e) {
+
+	        }
+	}
+	
 	public static void mesaj(Context ctx, String mesaj) {
 		Toast.makeText(ctx, mesaj, Toast.LENGTH_SHORT).show();
 	}

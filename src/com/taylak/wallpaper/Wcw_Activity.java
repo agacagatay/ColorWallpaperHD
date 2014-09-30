@@ -1,5 +1,7 @@
 package com.taylak.wallpaper;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,27 +10,38 @@ import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.UiLifecycleHelper;
 import com.taylak.wallpaperhd.R;
 import com.taylak.wallpaper.helper.Constants;
 import com.taylak.wallpaper.helper.Gtool;
 import com.taylak.wallpaper.helper.ISenkronSonuc;
 import com.taylak.wallpaper.helper.ImageItem;
 import com.taylak.wallpaper.helper.ImgTool;
+import com.taylak.wallpaper.helper.MainFragment;
 import com.taylak.wallpaper.helper.Referanslar;
 import com.taylak.wallpaper.net.Jsonislem;
 import com.taylak.wallpaper.net.SenkronHttp;
-import com.taylak.wallpaper.universalimage.BaseActivity;
 
-public class Wcw_Activity extends BaseActivity {
+public class Wcw_Activity extends FragmentActivity {
 
+	private MainFragment mainFragment;
+    private UiLifecycleHelper uiHelper;
+    
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,6 +49,18 @@ public class Wcw_Activity extends BaseActivity {
 
 		sabitleriAyarla();
 		actionBarAyarla();
+
+		if (savedInstanceState == null) {
+			// Add the fragment on initial activity setup
+			mainFragment = new MainFragment();
+			getSupportFragmentManager().beginTransaction()
+					.add(android.R.id.content, mainFragment).commit();
+		} else {
+			// Or set the fragment from restored state info
+			mainFragment = (MainFragment) getSupportFragmentManager()
+					.findFragmentById(android.R.id.content);
+		}
+
 	}
 
 	protected void sabitleriAyarla() {
@@ -156,8 +181,9 @@ public class Wcw_Activity extends BaseActivity {
 							tmpImgItemList.add(tmpImg);
 						}
 
-						if (!Referanslar.getGRUPLAR().containsKey(mod) || Referanslar.getGRUPLAR().get(mod).size() != tmpImgItemList
-								.size()) {
+						if (!Referanslar.getGRUPLAR().containsKey(mod)
+								|| Referanslar.getGRUPLAR().get(mod).size() != tmpImgItemList
+										.size()) {
 							Referanslar.getGRUPLAR().put(mod, tmpImgItemList);
 							Referanslar.setGRUPLAR(Referanslar.getGRUPLAR());
 

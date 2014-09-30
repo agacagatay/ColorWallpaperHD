@@ -134,6 +134,14 @@
                 android:text="Others"
                 android:textColor="@color/kahve"
                 android:textSize="20sp" />
+
+            <com.facebook.widget.LoginButton
+                android:id="@+id/authButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp" />
+ 
         </LinearLayout>
     </ScrollView>
 
