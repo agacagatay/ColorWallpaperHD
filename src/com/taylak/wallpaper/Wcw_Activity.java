@@ -71,16 +71,16 @@ public class Wcw_Activity extends FragmentActivity {
 	// "com.taylak.wallpaperhd:PendingAction";
 
 	protected void FbOnyukleme(Bundle savedInstanceState) {
-		if (savedInstanceState == null) {
-
-			mainFragment = new MainFragment();
-			getSupportFragmentManager().beginTransaction()
-					.add(android.R.id.content, mainFragment).commit();
-		} else {
-
-			mainFragment = (MainFragment) getSupportFragmentManager()
-					.findFragmentById(android.R.id.content);
-		}
+//		if (savedInstanceState == null) {
+//
+//			mainFragment = new MainFragment();
+//			getSupportFragmentManager().beginTransaction()
+//					.add(android.R.id.content, mainFragment).commit();
+//		} else {
+//
+//			mainFragment = (MainFragment) getSupportFragmentManager()
+//					.findFragmentById(android.R.id.content);
+//		}
 
 		uiHelper = new UiLifecycleHelper(this, callback);
 		uiHelper.onCreate(savedInstanceState);
@@ -89,8 +89,8 @@ public class Wcw_Activity extends FragmentActivity {
 	 
 		
 		
-		 loginButton.setReadPermissions(Arrays.asList("basic_info","email"));
-		// loginButton.setPublishPermissions("user_friends","email");
+		// loginButton.setReadPermissions(Arrays.asList("basic_info","email"));
+		 loginButton.setPublishPermissions("user_friends","email");
 
 		loginButton
 				.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
@@ -123,19 +123,19 @@ public class Wcw_Activity extends FragmentActivity {
 		return true;
 	}
 
-//	private FacebookDialog.Callback dialogCallback = new FacebookDialog.Callback() {
-//		@Override
-//		public void onError(FacebookDialog.PendingCall pendingCall,
-//				Exception error, Bundle data) {
-//			Log.d("HelloFacebook", String.format("Error: %s", error.toString()));
-//		}
-//
-//		@Override
-//		public void onComplete(FacebookDialog.PendingCall pendingCall,
-//				Bundle data) {
-//			Log.d("HelloFacebook", "Success!");
-//		}
-//	};
+	private FacebookDialog.Callback dialogCallback = new FacebookDialog.Callback() {
+		@Override
+		public void onError(FacebookDialog.PendingCall pendingCall,
+				Exception error, Bundle data) {
+			Log.d("HelloFacebook", String.format("Error: %s", error.toString()));
+		}
+
+		@Override
+		public void onComplete(FacebookDialog.PendingCall pendingCall,
+				Bundle data) {
+			Log.d("HelloFacebook", "Success!");
+		}
+	};
 
 	private void onSessionStateChange(Session session, SessionState state,
 			Exception exception) {
